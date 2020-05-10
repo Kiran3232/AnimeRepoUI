@@ -1,0 +1,6 @@
+.admin-dashboard-main{
+    height: 100vh;
+    background-image: url('/assets/Images/login-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
