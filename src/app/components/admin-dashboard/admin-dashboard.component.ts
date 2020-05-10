@@ -50,11 +50,11 @@ export class AdminDashboardComponent implements OnInit {
     this.progress = 0;
     var uploadForm = new FormData();
     uploadForm.append('id', animeForm.value.id);
-    uploadForm.append('name', animeForm.value.id);
-    uploadForm.append('source', animeForm.value.id);
-    uploadForm.append('description', animeForm.value.id);
-    uploadForm.append('airStartDate', animeForm.value.id);
-    uploadForm.append('airEndDate', animeForm.value.id);
+    uploadForm.append('name', animeForm.value.name);
+    uploadForm.append('source', animeForm.value.source);
+    uploadForm.append('description', animeForm.value.description);
+    uploadForm.append('airStartDate', animeForm.value.airStartDate);
+    uploadForm.append('airEndDate', animeForm.value.airEndDate);
     uploadForm.append('image', this.imageDataToSend, this.imageDataToSend.name);
     this.addAnimeService.addAnime(uploadForm).subscribe((event) => {
       if (event.type === HttpEventType.UploadProgress) {
