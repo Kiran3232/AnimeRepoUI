@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Anime } from 'src/app/model/anime.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   loaded: boolean = false;
 
   constructor(
-    public getAnimeService: GetAnimeService
+    public getAnimeService: GetAnimeService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +24,10 @@ export class HomeComponent implements OnInit {
       this.animeList = data;
       this.loaded = true;
     })
+  }
+
+  openAnimeDetail(anime : Anime){
+    this.router.navigate(['anime',anime.id]);
   }
 
 }

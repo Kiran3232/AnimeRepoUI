@@ -10,3 +10,9 @@
     margin-left: 0px !important;
     margin-right: 0px !important;
 }
+.jumbotron{
+    border-radius: 0px !important;
+}
+.card {
+    border-radius: 0px !important;
+}

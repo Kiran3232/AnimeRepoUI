@@ -13,6 +13,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { HomeComponent } from './components/home/home.component';
+import { EditAnimeComponent } from './components/edit-anime/edit-anime.component';
+import { AnimeDetailComponent } from './components/anime-detail/anime-detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { HomeComponent } from './components/home/home.component';
     FooterComponent,
     AdminDashboardComponent,
     AdminLoginComponent,
-    HomeComponent
+    HomeComponent,
+    EditAnimeComponent,
+    AnimeDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

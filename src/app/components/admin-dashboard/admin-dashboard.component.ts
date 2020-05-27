@@ -80,26 +80,28 @@ export class AdminDashboardComponent implements OnInit {
 
   addAnime() {
     this.submitted = true;
-    var anime: Anime = new Anime();
-    anime.airStartDate = this.animeForm.value.airStartDate;
-    anime.airEndDate = this.animeForm.value.airEndDate;
-    anime.description = this.animeForm.value.description;
-    anime.imagePath = this.animeForm.value.image;
-    anime.name = this.animeForm.value.name;
-    var seasons: Array<Season> = [];
-    anime.seasons = seasons;
-    anime.source = this.animeForm.value.source;
-    this.addAnimeService.addAnime(anime).subscribe((data: any) => {
-      this.success = true;
-      this.submitted = false;
-      this.animeForm.reset();
-      this.imgPath = '';
-      this.message = 'Added Successfully';
-    },
-      (err) => {
-        this.message = 'Could not add the anime!';
-        this.success = false;
-      });
+    if (!this.animeForm.invalid) {
+      var anime: Anime = new Anime();
+      anime.airStartDate = this.animeForm.value.airStartDate;
+      anime.airEndDate = this.animeForm.value.airEndDate;
+      anime.description = this.animeForm.value.description;
+      anime.imagePath = this.animeForm.value.image;
+      anime.name = this.animeForm.value.name;
+      var seasons: Array<Season> = [];
+      anime.seasons = seasons;
+      anime.source = this.animeForm.value.source;
+      this.addAnimeService.addAnime(anime).subscribe((data: any) => {
+        this.success = true;
+        this.submitted = false;
+        this.animeForm.reset();
+        this.imgPath = '';
+        this.message = 'Added Successfully';
+      },
+        (err) => {
+          this.message = 'Could not add the anime!';
+          this.success = false;
+        });
+    }
   }
 
   logout() {
