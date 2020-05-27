@@ -5,7 +5,7 @@
 </div>
 <div class="row" *ngIf="loaded">
     <div *ngFor="let anime of animeList" class="col-md-3 py-4">
-        <div class="card bg-secondary">
+        <div class="card bg-dark">
             <img src="{{'data:image/jpeg;base64,' + anime.image.data}}" alt="anime.pictureName" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title text-white"> {{ anime.name }}</h5>
