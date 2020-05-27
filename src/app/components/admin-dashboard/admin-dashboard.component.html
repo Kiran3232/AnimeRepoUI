@@ -1,66 +1,71 @@
-<div class="admin-dashboard-main py-5 px-5">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <form [formGroup]="animeForm" (ngSubmit)="addAnime(animeForm)">
-                <div class="row form-group">
-                    <label for="" class="col-md-2 col-form-label text-white">Unique Anime ID: </label>
-                    <input type="text" name="" id="" placeholder="Anime ID" class="col-md-10 form-control"
-                        formControlName="id">
-                </div>
-                <div class="row form-group">
-                    <label for="" class="col-md-2 col-form-label text-white">Name of the Anime : </label>
-                    <input type="text" name="" id="" placeholder="Anime Name" class="col-md-10 form-control"
-                        formControlName="name">
-                </div>
-                <div class="row form-group">
-                    <label for="" class="col-md-2 col-form-label text-white">Source of the Anime: </label>
-                    <input type="text" name="" id="" placeholder="Anime Source" class="col-md-10 form-control"
-                        formControlName="source">
-                </div>
-                <div class="row form-group">
-                    <label for="" class="col-md-2 col-form-label text-white">Anime Description : </label>
-                    <textarea placeholder="Anime Description" class="col-md-10 form-control"
-                        formControlName="description"></textarea>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-5 row mx-0">
-                        <label for="" class="col-md-6 col-form-label pl-0 text-white">Anime Air Start Date: </label>
-                        <input type="date" name="" id="" placeholder="Anime Air Start Date"
-                            class="col-md-6 form-control pr-0" formControlName="airStartDate">
+<div class="admin-dashboard-main">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="row px-md-5 px-1">
+            <div class="col-md-7">
+                <form [formGroup]="animeForm" (ngSubmit)="addAnime(animeForm)">
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Name of the Anime: </label>
+                        <input type="text" name="" id="name" placeholder="Anime Name" class="col-md-9 form-control"
+                            formControlName="name" [ngClass]="{ 'is-invalid': submitted && form.name.errors }">
+                        <div *ngIf="submitted && form.name.errors" class="invalid-feedback row text-center">
+                            <div *ngIf="form.name.errors.required" class="col-md-12">Anime Name is required</div>
+                        </div>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5 row mx-0">
-                        <label for="" class="col-md-6 col-form-label pl-0 text-white">Anime Air End Date: </label>
-                        <input type="date" name="" id="" placeholder="Anime Air End Date"
-                            class="col-md-6 form-control pr-0" formControlName="airEndDate">
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Source of the Anime: </label>
+                        <input type="text" name="" id="" placeholder="Anime Source" class="col-md-9 form-control"
+                            formControlName="source">
                     </div>
-                </div>
-                <div class="row form-group">
-                    <label for="" class="col-md-2 text-white">Image : </label>
-                    <input type="file" (change)="changeFile($event)" class="form-control-file col-md-4 text-white"
-                        formControlName="image" />
-                    <div class="col-md-6" *ngIf="imgPath != null">
-                        <img [src]="imgPath" alt="" class="img-fluid">
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Anime Description : </label>
+                        <textarea placeholder="Anime Description" class="col-md-9 form-control"
+                            formControlName="description"></textarea>
                     </div>
-                </div>
-                <div class="col-md-12 form-group text-center pt-3">
-                    <button class="btn btn-light">Save Anime</button>
-                </div>
-                <div *ngIf="uploading != ''" class="progress">
-                    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
-                        attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
-                        [ngStyle]="{ width: progress + '%' }">
-                        {{ progress }}%
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Anime Air Start Year : </label>
+                        <input type="text" name="" id="" placeholder="Anime Air Start Year"
+                            class="col-md-9 form-control" formControlName="airStartDate">
                     </div>
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Anime Air End Year : </label>
+                        <input type="text" name="" id="" placeholder="Anime Air End Year" class="col-md-9 form-control"
+                            formControlName="airEndDate">
+                    </div>
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Image : </label>
+                        <input type="file" (change)="changeFile($event)" class="form-control-file col-md-4 pl-0"
+                            formControlName="image" [ngClass]="{ 'is-invalid': submitted && form.image.errors }"/>
+                        <div *ngIf="submitted && form.image.errors" class="invalid-feedback col-md-4">
+                            <div *ngIf="form.image.errors.required">Image is required</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-group text-center pt-3">
+                        <button class="btn btn-outline-dark">Save Anime</button>
+                    </div>
+                    <div *ngIf="uploading != ''" class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                            attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                            [ngStyle]="{ width: progress + '%' }">
+                            {{ progress }}%
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-group text-center">
+                        <span [ngClass]="success ? 'text-success' : 'text-danger'">
+                            {{ message }}
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <div *ngIf="imgPath != null">
+                    <img [src]="imgPath" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-12 form-group text-center">
-                    <span class="text-light">
-                        {{ message }}
-                    </span>
-                </div>
-            </form>
+            </div>
         </div>
-        <div class="col-md-2"></div>
+    </div>
+    <div class="row text-center py-4">
+        <div class="col-md-12">
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
     </div>
 </div>

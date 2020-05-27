@@ -8,9 +8,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
 
-  searchForm: FormGroup = new FormGroup({
-    name: new FormControl('')
-  });
+  // searchForm: FormGroup = new FormGroup({
+  //   name: new FormControl('')
+  // });
 
   constructor() { }
 

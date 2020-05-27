@@ -1,12 +1,14 @@
-<div class="admin-login py-5 px-5">
+<div class="admin-login">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 card px-0">
-            <img class="card-img-top" src="assets/Images/login-card.jpg" alt="Card image cap">
-            <div class="row text-center card-body">
+        <div class="col-md-10 px-0">
+            <img src="assets/Images/login-background.jpg" alt="Background Image" class="img-fluid">
+        </div>
+        <div class="col-md-2 px-0 my-auto">
+            <div class="row text-center card-body px-0">
+                <h2 class="text-dark col-md-12 pb-5">Anime Repo</h2>
                 <form [formGroup]="loginForm" class="w-100" (ngSubmit)="onLogin(loginForm)">
                     <div class="col-md-12 form-group">
-                        <input type="text" name="" id="" placeholder="Username" class="form-control"
+                        <input type="text" name="" id="" placeholder="Email ID" class="form-control"
                             formControlName="username">
                     </div>
                     <div class="col-md-12 form-group">
@@ -19,11 +21,10 @@
                         </span>
                     </div>
                     <div class="col-md-12 form-group">
-                        <button class="btn btn-dark" type="submit">Login</button>
+                        <button class="btn btn-outline-dark" type="submit">Login</button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="col-md-4"></div>
     </div>
 </div>
