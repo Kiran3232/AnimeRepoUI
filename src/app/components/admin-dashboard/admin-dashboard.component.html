@@ -43,7 +43,7 @@
                         <button class="btn btn-outline-dark">Save Anime</button>
                     </div>
                     <div *ngIf="uploading != ''" class="progress">
-                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
                             attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
                             [ngStyle]="{ width: progress + '%' }">
                             {{ progress }}%

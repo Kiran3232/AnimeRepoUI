@@ -49,7 +49,7 @@ export class AdminDashboardComponent implements OnInit {
       }
       this.imageDataToSend = event.target.files[0];
     }
-    else{
+    else {
       this.imgPath = '';
     }
   }
@@ -74,6 +74,8 @@ export class AdminDashboardComponent implements OnInit {
             this.uploading = '';
             this.message = 'Added Successfully';
             this.success = true;
+            this.animeForm.reset();
+            this.submitted = false;
           }
         }
       },
