@@ -1,13 +1,19 @@
 <div>
     <div class="jumbotron">
-        <div class="row">
+        <div class="text-center py-4" *ngIf="!loaded">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="row" *ngIf="loaded">
             <div class="col-md-8 py-4">
                 <img src="{{ anime.imagePath }}" alt="{{ anime.name }} image" class="img-fluid">
             </div>
             <div class="col-md-4 text-center my-auto">
                 <h2 class="">{{ anime.name }}</h2>
                 <p class="">{{ anime.description }}</p>
-                <label for="">IMDB Source : <a href="{{ anime.source }}" target="_blank" class="text-success">{{ anime.name }}</a></label>
+                <label for="">IMDB Source : <a href="{{ anime.source }}" target="_blank"
+                        class="text-success">{{ anime.name }}</a></label>
                 <p for="">Air Start Year : {{ anime.airStartDate }}</p>
                 <p for="">Air End Year : {{ anime.airEndDate }}</p>
             </div>

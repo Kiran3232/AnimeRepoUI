@@ -11,6 +11,7 @@ import { Anime } from 'src/app/model/anime.model';
 export class AnimeDetailComponent implements OnInit {
 
   anime : Anime;
+  loaded : boolean = false;
 
   constructor(
     private activatedRoute : ActivatedRoute,
@@ -22,6 +23,7 @@ export class AnimeDetailComponent implements OnInit {
       var animeId = params['id'];
       this.getAnimeService.getAnime(animeId).subscribe((data : Anime) => {
         this.anime = data;
+        this.loaded = true;
       });
     })
   }
