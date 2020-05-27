@@ -8,9 +8,9 @@ export class GetAnimeService {
   
   constructor(private http : HttpClient) { }
   
-  // private baseUrl = 'https://anime-repo-backend.herokuapp.com';
+  private baseUrl = 'https://anime-repo-backend.herokuapp.com';
 
-  private baseUrl = 'http://localhost:8080';
+  // private baseUrl = 'http://localhost:8080';
 
   getAllAnime(){
     return this.http.get(this.baseUrl+'/anime/all');
