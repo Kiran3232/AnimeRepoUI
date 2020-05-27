@@ -9,15 +9,17 @@ import { Anime } from 'src/app/model/anime.model';
 })
 export class HomeComponent implements OnInit {
 
-  animeList : Array<Anime>;
+  animeList: Array<Anime>;
+  loaded: boolean = false;
 
   constructor(
-    public getAnimeService : GetAnimeService
+    public getAnimeService: GetAnimeService
   ) { }
 
   ngOnInit(): void {
-    this.getAnimeService.getAllAnime().subscribe((data : any) =>{
+    this.getAnimeService.getAllAnime().subscribe((data: any) => {
       this.animeList = data;
+      this.loaded = true;
     })
   }
 

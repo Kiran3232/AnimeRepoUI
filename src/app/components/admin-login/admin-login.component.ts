@@ -26,7 +26,7 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onLogin(loginForm: FormGroup) {
+  onLogin(loginForm: FormGroup) {
     this.authService.loginUsingEmail(loginForm.get('username').value,loginForm.get('password').value);
   }
 
