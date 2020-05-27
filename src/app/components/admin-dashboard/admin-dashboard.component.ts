@@ -4,6 +4,8 @@ import { AddAnimeService } from 'src/app/services/add-anime.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { Anime } from 'src/app/model/anime.model';
+import { Season } from 'src/app/model/season.model';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -14,7 +16,6 @@ export class AdminDashboardComponent implements OnInit {
 
   imgPath: any;
   imageDataToSend: any;
-  progress = 0;
   message = '';
   fileInfos: Observable<any>;
   uploading: string = '';
@@ -41,50 +42,64 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   changeFile(event: any) {
-    var reader = new FileReader();
-    if (event.target.files[0] !== undefined) {
-      reader.readAsDataURL(event.target.files[0])
-      reader.onload = (_event) => {
-        this.imgPath = reader.result;
-      }
-      this.imageDataToSend = event.target.files[0];
-    }
-    else {
-      this.imgPath = '';
-    }
+    this.imgPath = event.target.value;
   }
 
-  addAnime(animeForm: FormGroup) {
+  // addAnime(animeForm: FormGroup) {
+  //   this.submitted = true;
+  //   if (!animeForm.invalid) {
+  //     this.progress = 0;
+  //     var uploadForm = new FormData();
+  //     uploadForm.append('id', animeForm.value.id);
+  //     uploadForm.append('name', animeForm.value.name);
+  //     uploadForm.append('source', animeForm.value.source);
+  //     uploadForm.append('description', animeForm.value.description);
+  //     uploadForm.append('airStartDate', animeForm.value.airStartDate);
+  //     uploadForm.append('airEndDate', animeForm.value.airEndDate);
+  //     uploadForm.append('image', this.imageDataToSend, this.imageDataToSend.name);
+  //     this.addAnimeService.addAnime(uploadForm).subscribe((event) => {
+  //       if (event.type === HttpEventType.UploadProgress) {
+  //         this.uploading = 'true';
+  //         this.progress = Math.round(100 * event.loaded / event.total);
+  //         if (this.progress === 100) {
+  //           this.uploading = '';
+  //           this.message = 'Added Successfully';
+  //           this.success = true;
+  //           this.animeForm.reset();
+  //           this.submitted = false;
+  //         }
+  //       }
+  //     },
+  //       err => {
+  //         this.progress = 0;
+  //         this.message = 'Could not add the anime!';
+  //         this.success = false;
+  //       });
+  //   }
+  // }
+
+  addAnime() {
     this.submitted = true;
-    if (!animeForm.invalid) {
-      this.progress = 0;
-      var uploadForm = new FormData();
-      uploadForm.append('id', animeForm.value.id);
-      uploadForm.append('name', animeForm.value.name);
-      uploadForm.append('source', animeForm.value.source);
-      uploadForm.append('description', animeForm.value.description);
-      uploadForm.append('airStartDate', animeForm.value.airStartDate);
-      uploadForm.append('airEndDate', animeForm.value.airEndDate);
-      uploadForm.append('image', this.imageDataToSend, this.imageDataToSend.name);
-      this.addAnimeService.addAnime(uploadForm).subscribe((event) => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.uploading = 'true';
-          this.progress = Math.round(100 * event.loaded / event.total);
-          if (this.progress === 100) {
-            this.uploading = '';
-            this.message = 'Added Successfully';
-            this.success = true;
-            this.animeForm.reset();
-            this.submitted = false;
-          }
-        }
-      },
-        err => {
-          this.progress = 0;
-          this.message = 'Could not add the anime!';
-          this.success = false;
-        });
-    }
+    var anime: Anime = new Anime();
+    anime.airStartDate = this.animeForm.value.airStartDate;
+    anime.airEndDate = this.animeForm.value.airEndDate;
+    anime.description = this.animeForm.value.description;
+    anime.imagePath = this.animeForm.value.image;
+    anime.name = this.animeForm.value.name;
+    var seasons: Array<Season> = [];
+    anime.seasons = seasons;
+    anime.source = this.animeForm.value.source;
+    this.addAnimeService.addAnime(anime).subscribe((data: any) => {
+      this.success = true;
+      this.submitted = false;
+      this.animeForm.reset();
+      this.imgPath = '';
+      this.message = 'Added Successfully';
+    },
+      (err) => {
+        this.message = 'Could not add the anime!';
+        this.success = false;
+      });
   }
 
   logout() {

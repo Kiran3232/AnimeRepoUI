@@ -2,7 +2,7 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="row px-md-5 px-1">
             <div class="col-md-7">
-                <form [formGroup]="animeForm" (ngSubmit)="addAnime(animeForm)">
+                <form [formGroup]="animeForm" (ngSubmit)="addAnime()">
                     <div class="row form-group">
                         <label for="" class="col-md-3 col-form-label pl-0">Name of the Anime: </label>
                         <input type="text" name="" id="name" placeholder="Anime Name" class="col-md-9 form-control"
@@ -32,22 +32,15 @@
                             formControlName="airEndDate">
                     </div>
                     <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Image : </label>
-                        <input type="file" (change)="changeFile($event)" class="form-control-file col-md-4 pl-0"
+                        <label for="" class="col-md-3 col-form-label pl-0">Image Location : </label>
+                        <input type="text" (input)="changeFile($event)" class="form-control col-md-9" placeholder="Image Hosted Path"
                             formControlName="image" [ngClass]="{ 'is-invalid': submitted && form.image.errors }"/>
-                        <div *ngIf="submitted && form.image.errors" class="invalid-feedback col-md-4">
-                            <div *ngIf="form.image.errors.required">Image is required</div>
+                        <div *ngIf="submitted && form.image.errors" class="invalid-feedback row text-center">
+                            <div *ngIf="form.image.errors.required" class="col-md-12">Image Path is required</div>
                         </div>
                     </div>
                     <div class="col-md-12 form-group text-center pt-3">
                         <button class="btn btn-outline-dark">Save Anime</button>
-                    </div>
-                    <div *ngIf="uploading != ''" class="progress">
-                        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-                            attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
-                            [ngStyle]="{ width: progress + '%' }">
-                            {{ progress }}%
-                        </div>
                     </div>
                     <div class="col-md-12 form-group text-center">
                         <span [ngClass]="success ? 'text-success' : 'text-danger'">

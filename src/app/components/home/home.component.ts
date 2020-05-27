@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAnimeService.getAllAnime().subscribe((data: any) => {
+      console.log(data);
       this.animeList = data;
       this.loaded = true;
     })

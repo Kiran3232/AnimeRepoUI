@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest } from '@angular/common/http';
+import { Anime } from '../model/anime.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,10 @@ export class AddAnimeService {
 
   private baseUrl = 'https://anime-repo-backend.herokuapp.com';
 
-  addAnime(uploadForm : FormData){
-    const req = new HttpRequest('POST', `${this.baseUrl}/anime/add`, uploadForm, {
-      reportProgress: true,
-      responseType: 'json'
-    });
-    return this.http.request(req);
+  // private baseUrl = 'http://localhost:8080';
+
+  addAnime(anime : Anime){
+    return this.http.post(this.baseUrl + '/anime/add',anime);
   }
 
 }

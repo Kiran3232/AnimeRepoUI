@@ -10,6 +10,8 @@ export class GetAnimeService {
   
   private baseUrl = 'https://anime-repo-backend.herokuapp.com';
 
+  // private baseUrl = 'http://localhost:8080';
+
   getAllAnime(){
     return this.http.get(this.baseUrl+'/anime/all');
   }

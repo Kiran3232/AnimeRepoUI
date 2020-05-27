@@ -5,9 +5,8 @@ export class Anime{
     airStartDate : string;
     description : string;
     id : string;
-    image : {type: string, data: string};
+    imagePath : string;
     name : string;
-    pictureName : string;
     source : string;
     seasons : Array<Season>;
 }
