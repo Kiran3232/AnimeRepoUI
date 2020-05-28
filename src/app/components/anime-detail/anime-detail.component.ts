@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Anime } from 'src/app/model/anime.model';
 
@@ -15,7 +15,8 @@ export class AnimeDetailComponent implements OnInit {
 
   constructor(
     private activatedRoute : ActivatedRoute,
-    private getAnimeService : GetAnimeService
+    private getAnimeService : GetAnimeService,
+    public router : Router
   ) { }
 
   ngOnInit(): void {

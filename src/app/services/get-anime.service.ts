@@ -19,4 +19,8 @@ export class GetAnimeService {
   getAnime(animeId : string){
     return this.http.post(this.baseUrl+'/anime/get',animeId);
   }
+
+  searchAnime(value : string){
+    return this.http.post(this.baseUrl + '/anime/search',value);
+  }
 }

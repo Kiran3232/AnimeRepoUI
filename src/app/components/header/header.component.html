@@ -6,9 +6,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+
             </ul>
-        </div> -->
+            <div class="form-inline">
+                <input class="form-control" type="search" placeholder="Search Anime" aria-label="Search"
+                    [matAutocomplete]="auto" (input)="searchAnime($event)">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let anime of animeList" [value]="anime.name" (click)="openAnime(anime)">
+                        {{ anime.name }}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+        </div>
     </nav>
 </div>
