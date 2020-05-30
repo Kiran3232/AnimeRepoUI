@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Anime } from 'src/app/model/anime.model';
 import { Router } from '@angular/router';
+import { AngularFirePerformance } from '@angular/fire/performance';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,13 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public getAnimeService: GetAnimeService,
+    private perf: AngularFirePerformance,
     public router: Router
   ) { }
 
   ngOnInit(): void {
     this.getAnimeService.getAllAnime().subscribe((data: any) => {
-      console.log(data);
+      this.perf.trace('Load Anime Data');
       this.animeList = data;
       this.loaded = true;
     })

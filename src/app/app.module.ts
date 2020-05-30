@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AngularFirePerformanceModule } from "@angular/fire/performance";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirePerformanceModule,
     BrowserAnimationsModule,
     MatAutocompleteModule
   ],
