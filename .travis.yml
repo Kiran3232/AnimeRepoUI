@@ -23,8 +23,5 @@ script:
   - ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
   - ng build --prod
 
-deploy:
-  skip_cleanup: true
-  provider: firebase
-  token:
-    secure: 1//0gKLzb2jlhENRCgYIARAAGBASNgF-L9IrjWg0akdPpf_d8lkwxj6S1pEqjTkQen0ndXqw1AfyVLXTFBS7qBoiXByDrOlDVYoA6Q
+after_success:
+  - firebase deploy --token 1//0gKLzb2jlhENRCgYIARAAGBASNgF-L9IrjWg0akdPpf_d8lkwxj6S1pEqjTkQen0ndXqw1AfyVLXTFBS7qBoiXByDrOlDVYoA6Q
