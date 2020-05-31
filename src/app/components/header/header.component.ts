@@ -28,11 +28,13 @@ export class HeaderComponent implements OnInit {
   searchAnime(event: any) {
     var searchValue: string = event.target.value;
     if (searchValue.length !== 0) {
+      document.getElementById('search-icon').style.display = 'none';
       this.getAnimeService.searchAnime(searchValue).subscribe((data: any) => {
         this.animeList = data;
       })
     }
     else {
+      document.getElementById('search-icon').style.display = 'block';
       this.animeList = [];
     }
   }

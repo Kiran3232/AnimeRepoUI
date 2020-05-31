@@ -10,9 +10,12 @@
             <ul class="navbar-nav mr-auto">
 
             </ul>
-            <div class="form-inline">
-                <input class="form-control" type="search" placeholder="Search Anime" aria-label="Search"
+            <div class="form-inline pt-3 pt-lg-0">
+                <input class="form-control w-100" type="search" placeholder="Search Anime" aria-label="Search"
                     [matAutocomplete]="auto" (input)="searchAnime($event)">
+                <span class="search-icon" id="search-icon">
+                    <i class="fa fa-search"></i>
+                </span>
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let anime of animeList" [value]="anime.name" (click)="openAnime(anime)">
                         {{ anime.name }}
