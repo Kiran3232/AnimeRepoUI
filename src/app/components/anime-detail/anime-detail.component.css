@@ -16,8 +16,8 @@
     background-color: #F6F6F6;
 }
 
-.details:hover{
-    box-shadow: 0 2px 4px 0 rgba(44,42,41,0.5)
+.details:hover {
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.5)
 }
 
 .pointer {
@@ -29,6 +29,18 @@
     box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
 }
 
-.color-shade:hover{
-    box-shadow: 0 2px 4px 0 rgba(44,42,41,0.5)
+.color-shade:hover {
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.5)
+}
+
+.season-detail {
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+}
+
+@media only screen and (max-width: 767px) {
+    .season-detail {
+        min-height: 250px;
+    }
 }
