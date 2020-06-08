@@ -1,9 +1,34 @@
-.back-button{
+.back-button {
     width: 150px;
 }
-.back-icon{
+
+.back-icon {
     width: 20px;
 }
-.back-text{
+
+.back-text {
     font-size: 20px;
+}
+
+.details {
+    border: 1px solid #dedede;
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
+    background-color: #F6F6F6;
+}
+
+.details:hover{
+    box-shadow: 0 2px 4px 0 rgba(44,42,41,0.5)
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.color-shade {
+    background-color: #dedede;
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
+}
+
+.color-shade:hover{
+    box-shadow: 0 2px 4px 0 rgba(44,42,41,0.5)
 }
