@@ -9,8 +9,8 @@
             <div class="col-6 pb-4">
                 <a [routerLink]="['']" class="btn btn-outline-dark back-button"><i class="fa fa-chevron-left"></i><span class="back-text pl-3">Back</span></a>
             </div>
-            <div class="col-6 pb-4" *ngIf="loggedIn">
-                <a (click)="editAnime()" class="btn btn-outline-dark back-button"><i class="fa fa-edit"></i><span class="back-text pl-3">Edit</span></a>
+            <div class="col-6 pb-4 text-right" *ngIf="loggedIn">
+                <button (click)="editAnime()" class="btn btn-outline-dark back-button"><i class="fa fa-edit"></i><span class="back-text pl-3">Edit</span></button>
             </div>
             <div class="col-md-8 py-4">
                 <img src="{{ anime.imagePath }}" alt="{{ anime.name }} image" class="img-fluid">
