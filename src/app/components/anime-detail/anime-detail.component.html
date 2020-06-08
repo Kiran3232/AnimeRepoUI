@@ -40,10 +40,10 @@
                     </div>
                     <div class="col-12 collapse details px-0" id="season{{season.number}}">
                         <div class="row">
-                            <div class="col-6 py-3" *ngFor="let episode of season.episodes">
+                            <div class="col-6 py-3 season-detail d-flex" *ngFor="let episode of season.episodes">
                                 <label>Episode {{ episode.number }} : {{ episode.title | uppercase }} </label>
                                 <p>{{ episode.description }}</p>
-                                <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-dark">Watch Now at
+                                <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-dark mx-auto">Watch Now at
                                     KissAnime!</a>
                             </div>
                         </div>
