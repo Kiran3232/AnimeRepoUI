@@ -1,0 +1,37 @@
+<div class="edit-seasons py-2 py-md-5">
+    <div class="text-center py-4" *ngIf="!loaded">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="row" *ngIf="loaded">
+        <div class="col-md-7">
+            <div class="row">
+                <h2 class="col-5">Season {{ seasonNumber }}</h2>
+                <div class="col-7">
+                    <button class="btn btn-outline-dark" (click)="addEpisode()">Add Episode?</button>
+                </div>
+            </div>
+            <div class="col-12 px-0" *ngFor="let episode of anime.seasons[seasonNumber-1].episodes">
+                <div class="row py-3">
+                    <label class="col-6">Episode {{ episode.number }} : {{ episode.title }}</label>
+                    <div class="col-6 text-right">
+                        <button class="btn btn-outline-dark" (click)="editEpisode(episode.number)">Edit
+                            Episode?</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center py-4">
+                <button (click)="saveChange()" class="btn btn-outline-dark">Save</button>
+            </div>
+            <div class="col-12 pb-3 text-center">
+                <span [ngClass]="success ? 'text-success' : 'text-danger'">
+                    {{ message }}
+                </span>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="{{ image }}" alt="Anime Image" class="img-fluid">
+        </div>
+    </div>
+</div>

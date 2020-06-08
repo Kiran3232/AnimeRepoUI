@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Anime } from 'src/app/model/anime.model';
 import { AngularFirePerformance } from '@angular/fire/performance';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-anime-detail',
@@ -11,25 +12,36 @@ import { AngularFirePerformance } from '@angular/fire/performance';
 })
 export class AnimeDetailComponent implements OnInit {
 
-  anime : Anime;
-  loaded : boolean = false;
+  anime: Anime;
+  loaded: boolean = false;
+  loggedIn: boolean;
 
   constructor(
-    private activatedRoute : ActivatedRoute,
-    private getAnimeService : GetAnimeService,
+    private activatedRoute: ActivatedRoute,
+    private getAnimeService: GetAnimeService,
     private perf: AngularFirePerformance,
-    public router : Router
+    public router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.perf.trace('Get Anime Detail');
       var animeId = params['id'];
-      this.getAnimeService.getAnime(animeId).subscribe((data : Anime) => {
+      this.getAnimeService.getAnime(animeId).subscribe((data: Anime) => {
+        this.perf.trace('Get Anime Detail');
         this.anime = data;
         this.loaded = true;
       });
-    })
+    });
+    this.checkIfLoggedIn();
+  }
+
+  checkIfLoggedIn(){
+    this.loggedIn = this.authService.isLoggedIn;
+  }
+
+  editAnime(){
+    this.router.navigate(['editAnime'],{relativeTo: this.activatedRoute})
   }
 
 }

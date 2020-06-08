@@ -1,1 +1,91 @@
-<p>edit-anime works!</p>
+<div class="edit-anime py-2 py-md-5 px-1 px-md-5">
+    <div class="text-center py-4" *ngIf="!loaded">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div *ngIf="loaded">
+        <div class="row">
+            <div class="col-md-12">
+                <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Name of the Anime: </label>
+                        <input type="text" name="" id="name" placeholder="Anime Name" class="col-md-9 form-control"
+                            formControlName="name">
+                    </div>
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Source of the Anime: </label>
+                        <input type="text" name="" id="" placeholder="Anime Source" class="col-md-9 form-control"
+                            formControlName="source">
+                    </div>
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Anime Description : </label>
+                        <textarea placeholder="Anime Description" class="col-md-9 form-control"
+                            formControlName="description"></textarea>
+                    </div>
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Anime Air Start Year : </label>
+                        <input type="text" name="" id="" placeholder="Anime Air Start Year"
+                            class="col-md-9 form-control" formControlName="airStartDate">
+                    </div>
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Anime Air End Year : </label>
+                        <input type="text" name="" id="" placeholder="Anime Air End Year" class="col-md-9 form-control"
+                            formControlName="airEndDate">
+                    </div>
+                    <div class="row form-group">
+                        <label for="" class="col-md-3 col-form-label pl-0">Image Location : </label>
+                        <input type="text" (input)="changeFile($event)" class="form-control col-md-9"
+                            placeholder="Image Hosted Path" formControlName="image" />
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-5 mx-auto px-0">
+                            <div *ngIf="imgPath != null">
+                                <img [src]="imgPath" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-outline-dark">Save</button>
+                        </div>
+                        <div class="col-md-12 form-group text-center pt-2">
+                            <span [ngClass]="updated ? 'text-success' : 'text-danger'">
+                                {{ message }}
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+            </div>
+        </div>
+        <div class="row seasons pt-4">
+            <div class="col-7">
+                <h3>Seasons</h3>
+            </div>
+            <div class="col-5 text-right">
+                <button class="btn btn-outline-dark" (click)="addSeason()">Add Seasons?</button>
+            </div>
+            <div class="row w-100">
+                <div class="col-md-6 pt-3" *ngFor="let season of anime.seasons">
+                    <div class="row">
+                        <div class="col-5 pointer" data-toggle="collapse" attr.data-target="#season{{ season.number }}" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                            <h4>Season {{ season.number }}</h4>
+                        </div>
+                        <div class="col-7 text-left">
+                            <button class="btn btn-outline-dark" (click)="editSeason(season.number)">Edit Season?</button>
+                        </div>
+                        <div class="col-12 collapse" id="season{{season.number}}">
+                            <div class="row" *ngFor="let episode of season.episodes">
+                                <div class="col-12 py-2">
+                                    <h5>Episode {{ episode.number }} : {{ episode.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
