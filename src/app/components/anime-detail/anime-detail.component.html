@@ -1,13 +1,18 @@
 <div>
-    <div class="jumbotron">
-        <div class="text-center py-4" *ngIf="!loaded">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+    <div class="text-center py-4" *ngIf="!loaded">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
-        <div class="row" *ngIf="loaded">
-            <div class="col-md-12 pb-4">
-                <a [routerLink]="['']" class="btn btn-outline-dark back-button"><i class="fa fa-chevron-left"></i><span class="back-text pl-3">Back</span></a>
+    </div>
+    <div *ngIf="loaded">
+        <div class="row color-shade py-5">
+            <div class="col-6 pb-4">
+                <a [routerLink]="['']" class="btn btn-outline-dark back-button"><i class="fa fa-chevron-left"></i><span
+                        class="back-text pl-3">Back</span></a>
+            </div>
+            <div class="col-6 pb-4 text-right" *ngIf="loggedIn">
+                <button (click)="editAnime()" class="btn btn-outline-dark back-button"><i class="fa fa-edit"></i><span
+                        class="back-text pl-3">Edit</span></button>
             </div>
             <div class="col-md-8 py-4">
                 <img src="{{ anime.imagePath }}" alt="{{ anime.name }} image" class="img-fluid">
@@ -19,6 +24,31 @@
                         class="text-success">{{ anime.name }}</a></label>
                 <p for="">Air Start Year : {{ anime.airStartDate }}</p>
                 <p for="">Air End Year : {{ anime.airEndDate }}</p>
+            </div>
+        </div>
+        <div class="seasons py-4" *ngIf="anime.seasons.length !== 0">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Episode Catalogue :</h3>
+                </div>
+                <div class="col-md-6 py-3 pointer" *ngFor="let season of anime.seasons">
+                    <div class="color-shade py-3 px-3" data-toggle="collapse" attr.data-target="#season{{ season.number }}"
+                        role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                        <h4 class="text-dark">Season {{ season.number }} <span class="float-right"><i
+                                    class="fa fa-chevron-down"></i></span>
+                        </h4>
+                    </div>
+                    <div class="col-12 collapse details px-0" id="season{{season.number}}">
+                        <div class="row">
+                            <div class="col-6 py-3" *ngFor="let episode of season.episodes">
+                                <label>Episode {{ episode.number }} : {{ episode.title | uppercase }} </label>
+                                <p>{{ episode.description }}</p>
+                                <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-dark">Watch Now at
+                                    KissAnime!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

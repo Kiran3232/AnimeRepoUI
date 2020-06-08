@@ -8,5 +8,5 @@ export class Anime{
     imagePath : string;
     name : string;
     source : string;
-    seasons : Array<Season>;
+    seasons : Array<Season> = new Array<Season>();
 }

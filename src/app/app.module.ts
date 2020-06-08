@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
@@ -19,6 +19,8 @@ import { AnimeDetailComponent } from './components/anime-detail/anime-detail.com
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { EditSeasonsComponent } from './components/edit-seasons/edit-seasons.component';
+import { EditEpisodesComponent } from './components/edit-episodes/edit-episodes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +31,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     HomeComponent,
     EditAnimeComponent,
     AnimeDetailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EditSeasonsComponent,
+    EditEpisodesComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,

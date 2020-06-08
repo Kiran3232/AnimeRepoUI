@@ -1,0 +1,41 @@
+<div class="edit-episode">
+    <div class="text-center py-4" *ngIf="!loaded">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="row py-4" *ngIf="loaded">
+        <div class="col-md-7 pb-4">
+            <div class="row">
+                <h2 class="col-12">Season {{ seasonNumber }}</h2>
+                <label class="col-12">Episode {{ episodeNumber }} :
+                    {{ anime.seasons[seasonNumber-1].episodes[episodeNumber-1].title }}</label>
+                <div class="col-12">
+                    <input type="text" class="form-control"
+                        [(ngModel)]="anime.seasons[seasonNumber-1].episodes[episodeNumber-1].title">
+                </div>
+                <label class="col-12 pt-2">Description :</label>
+                <div class="col-12">
+                    <textarea class="form-control"
+                        [(ngModel)]="anime.seasons[seasonNumber-1].episodes[episodeNumber-1].description"></textarea>
+                </div>
+                <label class="col-12 pt-2">URL :</label>
+                <div class="col-12">
+                    <input type="text" class="form-control"
+                        [(ngModel)]="anime.seasons[seasonNumber-1].episodes[episodeNumber-1].url">
+                </div>
+                <div class="text-center col-12 py-3">
+                    <button class="btn btn-outline-dark" (click)="saveChanges()">Save Changes!</button>
+                </div>
+                <div class="col-12 pb-3 text-center">
+                    <span [ngClass]="success ? 'text-success' : 'text-danger'">
+                        {{ message }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="{{ image }}" alt="Anime Image" class="img-fluid">
+        </div>
+    </div>
+</div>
