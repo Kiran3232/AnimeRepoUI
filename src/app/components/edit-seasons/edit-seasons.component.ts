@@ -39,7 +39,12 @@ export class EditSeasonsComponent implements OnInit {
         this.anime = data;
         this.loaded = true;
         this.image = this.anime.imagePath;
-      });
+      },
+        (error) => {
+          console.log(error);
+          window.alert(error.error);
+          this.router.navigate(['']);
+        });
     })
   }
 

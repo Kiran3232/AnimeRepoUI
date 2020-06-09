@@ -8,7 +8,7 @@ export class GetAnimeService {
   
   constructor(private http : HttpClient) { }
   
-  private baseUrl = 'https://anime-repo-backend.herokuapp.com';
+  private baseUrl = 'https://anime-repo.cfapps.io/';
 
   // private baseUrl = 'http://localhost:8080';
 

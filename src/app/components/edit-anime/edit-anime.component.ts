@@ -46,8 +46,13 @@ export class EditAnimeComponent implements OnInit {
         this.anime = data;
         this.loaded = true;
         this.initializeForm();
-      });
-    })
+      },
+        (error) => {
+          console.log(error);
+          window.alert(error.error);
+          this.router.navigate(['']);
+        });
+    });
   }
 
   initializeForm() {
@@ -71,30 +76,30 @@ export class EditAnimeComponent implements OnInit {
     this.anime.airStartDate = this.editForm.get('airStartDate').value;
     this.anime.airEndDate = this.editForm.get('airEndDate').value;
     this.anime.imagePath = this.editForm.get('image').value;
-    this.addAnimeService.addAnime(this.anime).subscribe((data : any) =>{
+    this.addAnimeService.addAnime(this.anime).subscribe((data: any) => {
       this.updated = true;
       this.message = 'Anime Updated Successfully';
     },
-    (error) =>{
-      this.updated = false;
-      this.message = 'Failed to Update Anime';
-    })
+      (error) => {
+        this.updated = false;
+        this.message = 'Failed to Update Anime';
+      })
   }
 
-  addSeason(){
-    let season : Season = new Season();
+  addSeason() {
+    let season: Season = new Season();
     console.log(this.anime.seasons.length);
     season.number = this.anime.seasons.length + 1;
-    let episodes : Array<Episode> = [];
+    let episodes: Array<Episode> = [];
     season.episodes = episodes;
     this.anime.seasons.push(season);
-    this.addAnimeService.addAnime(this.anime).subscribe((data) =>{
+    this.addAnimeService.addAnime(this.anime).subscribe((data) => {
       console.log(this.anime)
     });
   }
 
-  editSeason(season : number){
-    this.router.navigate(['../','editSeason',season],{relativeTo: this.activatedRoute});
+  editSeason(season: number) {
+    this.router.navigate(['../', 'editSeason', season], { relativeTo: this.activatedRoute });
   }
 
 }
