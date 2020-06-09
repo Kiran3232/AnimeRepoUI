@@ -25,9 +25,9 @@ export class EditEpisodesComponent implements OnInit {
   image: string;
   seasonNumber: number;
   episodeNumber: number;
-  success:boolean;
+  success: boolean;
   message: string;
-  
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       var animeId = params['id'];
@@ -38,19 +38,24 @@ export class EditEpisodesComponent implements OnInit {
         this.anime = data;
         this.loaded = true;
         this.image = this.anime.imagePath;
-      });
+      },
+        (error) => {
+          console.log(error);
+          window.alert(error.error);
+          this.router.navigate(['']);
+        });
     })
   }
 
-  saveChanges(){
+  saveChanges() {
     this.addAnimeService.addAnime(this.anime).subscribe((data => {
       this.success = true;
       this.message = 'Updated Successfully'
     }),
-    (error) =>{
-      this.success = false;
-      this.message = 'Failed To Update';
-    })
+      (error) => {
+        this.success = false;
+        this.message = 'Failed To Update';
+      })
   }
 
 }

@@ -31,6 +31,11 @@ export class AnimeDetailComponent implements OnInit {
         this.perf.trace('Get Anime Detail');
         this.anime = data;
         this.loaded = true;
+      },
+      (error) => {
+        console.log(error);
+        window.alert(error.error);
+        this.router.navigate(['']);
       });
     });
     this.checkIfLoggedIn();
