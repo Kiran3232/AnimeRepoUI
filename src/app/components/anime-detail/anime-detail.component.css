@@ -1,5 +1,6 @@
 .back-button {
     width: 150px;
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
 }
 
 .back-icon {

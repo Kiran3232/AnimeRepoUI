@@ -1,3 +1,12 @@
-.card{
+.card {
     cursor: pointer;
+    background-color: #F6F6F6;
+}
+
+.card-shadow {
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
+}
+
+.card-shadow:hover {
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.5);
 }
