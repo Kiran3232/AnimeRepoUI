@@ -4,6 +4,7 @@ import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Anime } from 'src/app/model/anime.model';
 import { AngularFirePerformance } from '@angular/fire/performance';
 import { AuthService } from 'src/app/services/auth.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-anime-detail',
@@ -32,21 +33,30 @@ export class AnimeDetailComponent implements OnInit {
         this.anime = data;
         this.loaded = true;
       },
-      (error) => {
-        console.log(error);
-        window.alert(error.error);
-        this.router.navigate(['']);
-      });
+        (error) => {
+          console.log(error);
+          window.alert(error.error);
+          this.router.navigate(['']);
+        });
     });
     this.checkIfLoggedIn();
   }
 
-  checkIfLoggedIn(){
+  checkIfLoggedIn() {
     this.loggedIn = this.authService.isLoggedIn;
   }
 
-  editAnime(){
-    this.router.navigate(['editAnime'],{relativeTo: this.activatedRoute})
+  editAnime() {
+    this.router.navigate(['editAnime'], { relativeTo: this.activatedRoute })
   }
 
+  rotate(event: Event, season: number) {
+    var id = '#season' + season;
+    if (!$(id).hasClass('show')) {
+      $(id + '-chevron').addClass("down");
+    }
+    else{
+      $(id + '-chevron').removeClass("down");
+    }
+  }
 }

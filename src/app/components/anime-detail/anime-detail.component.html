@@ -31,11 +31,11 @@
                 <div class="col-12">
                     <h3>Episode Catalogue :</h3>
                 </div>
-                <div class="col-md-6 py-3" *ngFor="let season of anime.seasons">
+                <div class="col-md-6 col-lg-4 py-3" *ngFor="let season of anime.seasons">
                     <div class="color-shade py-3 px-3 pointer" data-toggle="collapse" attr.data-target="#season{{ season.number }}"
-                        role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                        <h4 class="text-dark">Season {{ season.number }} <span class="float-right"><i
-                                    class="fa fa-chevron-down"></i></span>
+                        role="button" aria-expanded="false" aria-controls="multiCollapseExample1" (click)="rotate($event,season.number)">
+                        <h4 class="text-dark my-0">Season {{ season.number }} <span class="float-right"><i
+                                    class="fa fa-chevron-down rotate" id="season{{ season.number }}-chevron"></i></span>
                         </h4>
                     </div>
                     <div class="col-12 collapse details px-0" id="season{{season.number}}">

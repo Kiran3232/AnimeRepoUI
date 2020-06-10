@@ -50,6 +50,18 @@
     min-height: 200px;
 }
 
+.rotate {
+    -moz-transition: all 0.25s linear;
+    -webkit-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+
+.rotate.down {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
 @media only screen and (max-width: 767px) {
     .season-detail {
         min-height: 250px;
