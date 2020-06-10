@@ -38,5 +38,5 @@ jobs:
      - name: Test and Build
        run: |
          npm install
-         npm test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
+         npm test -- --watch=false --progress=false --browsers=ChromeHeadlessNoSandbox
          npm run build --prod
