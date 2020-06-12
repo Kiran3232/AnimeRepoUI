@@ -5,6 +5,7 @@ import { Anime } from 'src/app/model/anime.model';
 import { AngularFirePerformance } from '@angular/fire/performance';
 import { AuthService } from 'src/app/services/auth.service';
 import * as $ from 'jquery';
+import { CommonsService } from 'src/app/services/commons.service';
 
 @Component({
   selector: 'app-anime-detail',
@@ -22,22 +23,30 @@ export class AnimeDetailComponent implements OnInit {
     private getAnimeService: GetAnimeService,
     private perf: AngularFirePerformance,
     public router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private commonsService: CommonsService
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       var animeId = params['id'];
-      this.getAnimeService.getAnime(animeId).subscribe((data: Anime) => {
-        this.perf.trace('Get Anime Detail');
-        this.anime = data;
+      var anime = this.commonsService.currentAnime;
+      if (anime !== undefined && anime.id === animeId) {
+        this.anime = anime;
         this.loaded = true;
-      },
-        (error) => {
-          console.log(error);
-          window.alert(error.error);
-          this.router.navigate(['']);
-        });
+      }
+      else {
+        this.getAnimeService.getAnime(animeId).subscribe((data: Anime) => {
+          this.perf.trace('Get Anime Detail');
+          this.anime = data;
+          this.loaded = true;
+        },
+          (error) => {
+            console.log(error);
+            window.alert(error.error);
+            this.router.navigate(['']);
+          });
+      }
     });
     this.checkIfLoggedIn();
   }
@@ -55,7 +64,7 @@ export class AnimeDetailComponent implements OnInit {
     if (!$(id).hasClass('show')) {
       $(id + '-chevron').addClass("down");
     }
-    else{
+    else {
       $(id + '-chevron').removeClass("down");
     }
   }
