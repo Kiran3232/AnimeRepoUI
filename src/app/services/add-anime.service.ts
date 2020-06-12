@@ -11,7 +11,7 @@ export class AddAnimeService {
     private http : HttpClient
   ) { }
 
-  private baseUrl = 'https://anime-repo.cfapps.io/';
+  private baseUrl = 'https://anime-repo.cfapps.io';
 
   // private baseUrl = 'http://localhost:8080';
 
