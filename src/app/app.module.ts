@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { EditSeasonsComponent } from './components/edit-seasons/edit-seasons.component';
 import { EditEpisodesComponent } from './components/edit-episodes/edit-episodes.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { EditEpisodesComponent } from './components/edit-episodes/edit-episodes.
     AngularFireAuthModule,
     AngularFirePerformanceModule,
     BrowserAnimationsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
