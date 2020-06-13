@@ -47,7 +47,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-6" *ngIf="anime.youtubeTrailerUrl !== null">
+            <div class="col-lg-6 pt-4 pt-lg-0" *ngIf="anime.youtubeTrailerUrl !== null && anime.youtubeTrailerUrl !== ''">
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" [src]="anime.youtubeTrailerUrl | safe"
                         frameborder="0"></iframe>
