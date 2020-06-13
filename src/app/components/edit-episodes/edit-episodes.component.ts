@@ -48,6 +48,7 @@ export class EditEpisodesComponent implements OnInit {
   }
 
   saveChanges() {
+    console.log(this.anime)
     this.addAnimeService.addAnime(this.anime).subscribe((data => {
       this.success = true;
       this.message = 'Updated Successfully'

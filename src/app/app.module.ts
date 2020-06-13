@@ -22,6 +22,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { EditSeasonsComponent } from './components/edit-seasons/edit-seasons.component';
 import { EditEpisodesComponent } from './components/edit-episodes/edit-episodes.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SafePipe } from './pipes/safe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AnimeDetailComponent,
     PageNotFoundComponent,
     EditSeasonsComponent,
-    EditEpisodesComponent
+    EditEpisodesComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ export class Episode {
     title: string;
     description: string;
     url: string;
+    image: string;
 
-    constructor(){}
+    constructor() { }
 }

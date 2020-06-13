@@ -26,24 +26,58 @@
                 <p for="">Air End Year : {{ anime.airEndDate }}</p>
             </div>
         </div>
+        <div class="row py-4">
+            <div class="col-12">
+                <h3>Gallery :</h3>
+            </div>
+            <div class="col-lg-6">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" [ngClass]="{active : image === anime.images[0]}" *ngFor="let image of anime.images">
+                            <img src="{{ image }}" class="d-block w-100" alt="">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6" *ngIf="anime.youtubeTrailerUrl !== null">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" [src]="anime.youtubeTrailerUrl | safe"
+                        frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
         <div class="seasons py-4" *ngIf="anime.seasons.length !== 0">
             <div class="row">
                 <div class="col-12">
                     <h3>Episode Catalogue :</h3>
                 </div>
                 <div class="col-md-6 col-lg-4 py-3" *ngFor="let season of anime.seasons">
-                    <div class="color-shade py-3 px-3 pointer" data-toggle="collapse" attr.data-target="#season{{ season.number }}"
-                        role="button" aria-expanded="false" aria-controls="multiCollapseExample1" (click)="rotate($event,season.number)">
+                    <div class="color-shade py-3 px-3 pointer" data-toggle="collapse"
+                        attr.data-target="#season{{ season.number }}" role="button" aria-expanded="false"
+                        aria-controls="multiCollapseExample1" (click)="rotate($event,season.number)">
                         <h4 class="text-dark my-0">Season {{ season.number }} <span class="float-right"><i
                                     class="fa fa-chevron-down rotate" id="season{{ season.number }}-chevron"></i></span>
                         </h4>
                     </div>
                     <div class="col-12 collapse details px-0" id="season{{season.number}}">
-                        <div class="row">
-                            <div class="col-6 py-3 season-detail d-flex" *ngFor="let episode of season.episodes">
-                                <label>Episode {{ episode.number }} : {{ episode.title | uppercase }} </label>
-                                <p class="mb-auto pb-3">{{ episode.description }}</p>
-                                <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-dark mx-auto">Watch Now at
+                        <div class="row season-detail-main">
+                            <div class="col-12 py-3 season-detail d-flex" *ngFor="let episode of season.episodes">
+                                <strong><label>Episode {{ episode.number }} : {{ episode.title | uppercase }}
+                                    </label></strong>
+                                <img *ngIf="episode.image" src="{{ episode.image }}"
+                                    alt="{{ anime.name }} Season {{ season.number }} Episode {{ episode.number }}"
+                                    class="img-fluid">
+                                <p class="mb-auto pb-3 pt-2">{{ episode.description }}</p>
+                                <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-dark mx-auto">Watch
+                                    Now at
                                     KissAnime!</a>
                             </div>
                         </div>

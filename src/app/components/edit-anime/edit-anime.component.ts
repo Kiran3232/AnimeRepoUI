@@ -3,7 +3,7 @@ import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Anime } from 'src/app/model/anime.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirePerformance } from '@angular/fire/performance';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, Form } from '@angular/forms';
 import { Episode } from 'src/app/model/episode.model';
 import { Season } from 'src/app/model/season.model';
 import { AddAnimeService } from 'src/app/services/add-anime.service';
@@ -21,7 +21,10 @@ export class EditAnimeComponent implements OnInit {
     description: new FormControl(''),
     airStartDate: new FormControl(''),
     airEndDate: new FormControl(''),
-    image: new FormControl('', [Validators.required])
+    image: new FormControl('', [Validators.required]),
+    images: new FormArray([]),
+    hosts: new FormArray([]),
+    youtubeUrl: new FormControl('')
   });
 
   anime: Anime;
@@ -62,6 +65,18 @@ export class EditAnimeComponent implements OnInit {
     this.editForm.get('airStartDate').setValue(this.anime.airStartDate);
     this.editForm.get('airEndDate').setValue(this.anime.airEndDate);
     this.editForm.get('image').setValue(this.anime.imagePath);
+    if (this.anime.images !== null) {
+      for(let image of this.anime.images){
+        let control = new FormControl(image);
+        (<FormArray>this.editForm.get('images')).push(control);
+      }
+    }
+    if(this.anime.whereToWatch !== null){
+      for(let host of this.anime.whereToWatch){
+        let control = new FormControl(host);
+        (<FormArray>this.editForm.get('hosts')).push(control);
+      }
+    }
     this.imgPath = this.anime.imagePath;
   }
 
@@ -76,6 +91,9 @@ export class EditAnimeComponent implements OnInit {
     this.anime.airStartDate = this.editForm.get('airStartDate').value;
     this.anime.airEndDate = this.editForm.get('airEndDate').value;
     this.anime.imagePath = this.editForm.get('image').value;
+    this.anime.youtubeTrailerUrl = this.editForm.get('youtubeUrl').value;
+    this.anime.images = this.editForm.get('images').value;
+    this.anime.whereToWatch = this.editForm.get('hosts').value;
     this.addAnimeService.addAnime(this.anime).subscribe((data: any) => {
       this.updated = true;
       this.message = 'Anime Updated Successfully';
@@ -88,7 +106,6 @@ export class EditAnimeComponent implements OnInit {
 
   addSeason() {
     let season: Season = new Season();
-    console.log(this.anime.seasons.length);
     season.number = this.anime.seasons.length + 1;
     let episodes: Array<Episode> = [];
     season.episodes = episodes;
@@ -102,4 +119,21 @@ export class EditAnimeComponent implements OnInit {
     this.router.navigate(['../', 'editSeason', season], { relativeTo: this.activatedRoute });
   }
 
+  addImages() {
+    const control = new FormControl('');
+    (<FormArray>this.editForm.get('images')).push(control);
+  }
+
+  addHosts(){
+    const control = new FormControl('');
+    (<FormArray>this.editForm.get('hosts')).push(control);
+  }
+
+  get images() {
+    return this.editForm.get('images') as FormArray;
+  }
+
+  get hosts(){
+    return this.editForm.get('hosts') as FormArray;
+  }
 }
