@@ -1,8 +1,8 @@
 import { Episode } from './episode.model';
 
-export class Season{
+export class Season {
+    number: number;
+    episodes: Array<Episode> = new Array<Episode>();
 
-    number : number;
-    episodes : Array<Episode> = new Array<Episode>();
-    constructor(){}
+    constructor() { }
 }

@@ -6,7 +6,7 @@
 <div class="row" *ngIf="loaded">
     <div *ngFor="let anime of animeList" class="col-md-6 col-lg-3 py-4">
         <div class="card card-shadow" (click)="openAnimeDetail(anime)">
-            <img src="{{ anime.imagePath }}" alt="anime.pictureName" class="card-img-top">
+            <img src="{{ anime.imagePath }}" alt="{{ anime.name }} image" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"> {{ anime.name }}</h5>
                 <p class="card-text">{{ anime.description }} </p>
