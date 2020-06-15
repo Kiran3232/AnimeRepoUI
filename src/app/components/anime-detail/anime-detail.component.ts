@@ -40,7 +40,6 @@ export class AnimeDetailComponent implements OnInit {
           this.perf.trace('Get Anime Detail');
           this.anime = data;
           this.loaded = true;
-          console.log(this.anime.whereToWatch.length)
         },
           (error) => {
             console.log(error);
