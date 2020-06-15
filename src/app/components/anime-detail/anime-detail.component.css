@@ -35,15 +35,6 @@
     cursor: pointer;
 }
 
-.color-shade {
-    background-color: #dedede;
-    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
-}
-
-.color-shade:hover {
-    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.5);
-}
-
 .season-detail {
     flex-direction: column;
     justify-content: space-between;
@@ -53,6 +44,15 @@
 
 .season-detail:hover {
     box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.5);
+}
+
+.carousel-control-next, .carousel-control-prev {
+    opacity: 1 !important;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 40px !important;
+    height: 40px !important;
 }
 
 .season-detail-main {

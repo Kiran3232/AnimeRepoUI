@@ -24,11 +24,6 @@
                     <input type="text" class="form-control"
                         [(ngModel)]="anime.seasons[seasonNumber-1].episodes[episodeNumber-1].url">
                 </div>
-                <label class="col-12 pt-2">Image URL :</label>
-                <div class="col-12">
-                    <input type="text" class="form-control"
-                        [(ngModel)]="anime.seasons[seasonNumber-1].episodes[episodeNumber-1].image">
-                </div>
                 <div class="text-center col-12 py-3">
                     <button class="btn btn-outline-dark" (click)="saveChanges()">Save Changes!</button>
                 </div>
@@ -40,7 +35,7 @@
             </div>
         </div>
         <div class="col-md-5">
-            <img src="{{ anime.seasons[seasonNumber-1].episodes[episodeNumber-1].image }}" alt="Anime Image" class="img-fluid">
+            <img src="{{ anime.imagePath }}" alt="Anime Image" class="img-fluid">
         </div>
     </div>
 </div>

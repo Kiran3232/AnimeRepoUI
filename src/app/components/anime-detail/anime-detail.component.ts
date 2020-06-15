@@ -40,6 +40,7 @@ export class AnimeDetailComponent implements OnInit {
           this.perf.trace('Get Anime Detail');
           this.anime = data;
           this.loaded = true;
+          console.log(this.anime.whereToWatch.length)
         },
           (error) => {
             console.log(error);
@@ -56,7 +57,7 @@ export class AnimeDetailComponent implements OnInit {
   }
 
   editAnime() {
-    this.router.navigate(['editAnime'], { relativeTo: this.activatedRoute })
+    this.router.navigate(['editAnime'], { relativeTo: this.activatedRoute });
   }
 
   rotate(event: Event, season: number) {
@@ -67,5 +68,12 @@ export class AnimeDetailComponent implements OnInit {
     else {
       $(id + '-chevron').removeClass("down");
     }
+  }
+
+  getHosting(value: string) {
+    if (value.indexOf('netflix') !== -1) {
+      return 'Netflix';
+    }
+    return 'KissAnime';
   }
 }

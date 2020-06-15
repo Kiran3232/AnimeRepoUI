@@ -21,3 +21,12 @@
 .card {
     border-radius: 0px !important;
 }
+
+.color-shade {
+    background-color: #dedede;
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
+}
+
+.color-shade:hover {
+    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.5);
+}
