@@ -44,7 +44,7 @@
                         <p>{{ anime.airEndDate }}</p>
                     </div>
                 </div>
-                <div class="row" *ngIf="anime.whereToWatch.length !== 0">
+                <div class="row" *ngIf="anime.whereToWatch != null && anime.whereToWatch.length !== 0">
                     <div class="col-6 text-right">
                         <p>Watch Now at : </p>
                     </div>
@@ -106,7 +106,7 @@
                                 <strong><label>Episode {{ episode.number }} : {{ episode.title | uppercase }}
                                     </label></strong>
                                 <p class="mb-auto pb-3 pt-2">{{ episode.description }}</p>
-                                <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-dark mx-auto">Watch
+                                <a href="{{ episode.url }}" target="_blank" class="btn btn-dark back-button mx-auto">Watch
                                     Now at
                                     KissAnime!</a>
                             </div>
