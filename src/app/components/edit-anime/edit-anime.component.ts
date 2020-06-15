@@ -65,6 +65,7 @@ export class EditAnimeComponent implements OnInit {
     this.editForm.get('airStartDate').setValue(this.anime.airStartDate);
     this.editForm.get('airEndDate').setValue(this.anime.airEndDate);
     this.editForm.get('image').setValue(this.anime.imagePath);
+    this.editForm.get('youtubeUrl').setValue(this.anime.youtubeTrailerUrl);
     if (this.anime.images !== null) {
       for(let image of this.anime.images){
         let control = new FormControl(image);

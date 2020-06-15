@@ -20,20 +20,52 @@
             <div class="col-lg-4 text-center my-auto">
                 <h2 class="">{{ anime.name }}</h2>
                 <p class="">{{ anime.description }}</p>
-                <label for="">IMDB Source : <a href="{{ anime.source }}" target="_blank"
-                        class="text-success">{{ anime.name }}</a></label>
-                <p for="">Air Start Year : {{ anime.airStartDate }}</p>
-                <p for="">Air End Year : {{ anime.airEndDate }}</p>
+                <div class="row">
+                    <div class="col-6 text-right">
+                        <p>IMDB Source : </p>
+                    </div>
+                    <div class="col-6 text-left">
+                        <p><a href="{{ anime.source }}" target="_blank" class="text-success">{{ anime.name }}</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right">
+                        <p>Air Start Year : </p>
+                    </div>
+                    <div class="col-6 text-left">
+                        <p>{{ anime.airStartDate }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right">
+                        <p>Air End Year : </p>
+                    </div>
+                    <div class="col-6 text-left">
+                        <p>{{ anime.airEndDate }}</p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="anime.whereToWatch.length !== 0">
+                    <div class="col-6 text-right">
+                        <p>Watch Now at : </p>
+                    </div>
+                    <div class="col-6 text-left">
+                        <label for="" *ngFor="let host of anime.whereToWatch" class="d-block">
+                            <a href="{{ host }}" target="_blank"
+                                class="text-success">{{ getHosting(host) }}</a></label>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row py-4">
-            <div class="col-12">
+        <div class="row py-4"
+            *ngIf="anime.images !== null || (anime.youtubeTrailerUrl !== null && anime.youtubeTrailerUrl !== '')">
+            <div class="col-12 pb-4">
                 <h3>Gallery :</h3>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" *ngIf="anime.images !== null">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item" [ngClass]="{active : image === anime.images[0]}" *ngFor="let image of anime.images">
+                        <div class="carousel-item" [ngClass]="{active : image === anime.images[0]}"
+                            *ngFor="let image of anime.images">
                             <img src="{{ image }}" class="d-block w-100" alt="">
                         </div>
                     </div>
@@ -47,7 +79,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-6 pt-4 pt-lg-0" *ngIf="anime.youtubeTrailerUrl !== null && anime.youtubeTrailerUrl !== ''">
+            <div class="col-lg-6 pt-4 pt-lg-0"
+                *ngIf="anime.youtubeTrailerUrl !== null && anime.youtubeTrailerUrl !== ''">
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" [src]="anime.youtubeTrailerUrl | safe"
                         frameborder="0"></iframe>
@@ -72,9 +105,6 @@
                             <div class="col-12 py-3 season-detail d-flex" *ngFor="let episode of season.episodes">
                                 <strong><label>Episode {{ episode.number }} : {{ episode.title | uppercase }}
                                     </label></strong>
-                                <img *ngIf="episode.image" src="{{ episode.image }}"
-                                    alt="{{ anime.name }} Season {{ season.number }} Episode {{ episode.number }}"
-                                    class="img-fluid">
                                 <p class="mb-auto pb-3 pt-2">{{ episode.description }}</p>
                                 <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-dark mx-auto">Watch
                                     Now at

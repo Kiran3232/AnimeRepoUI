@@ -14,7 +14,10 @@
             </div>
             <div class="col-12 px-0" *ngFor="let episode of anime.seasons[seasonNumber-1].episodes">
                 <div class="row py-3">
-                    <label class="col-6">Episode {{ episode.number }} : {{ episode.title }}</label>
+                    <label class="col-6">
+                       <strong>Episode {{ episode.number }} : {{ episode.title }}</strong>
+                       <span class="d-block">{{ episode.description }}</span>
+                    </label>
                     <div class="col-6 text-right">
                         <button class="btn btn-outline-dark" (click)="editEpisode(episode.number)">Edit
                             Episode?</button>
