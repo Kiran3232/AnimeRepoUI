@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { Anime } from 'src/app/model/anime.model';
 import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Router } from '@angular/router';

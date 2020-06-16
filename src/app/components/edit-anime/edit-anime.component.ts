@@ -3,7 +3,7 @@ import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { Anime } from 'src/app/model/anime.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirePerformance } from '@angular/fire/performance';
-import { FormGroup, FormControl, Validators, FormArray, Form } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Episode } from 'src/app/model/episode.model';
 import { Season } from 'src/app/model/season.model';
 import { AddAnimeService } from 'src/app/services/add-anime.service';

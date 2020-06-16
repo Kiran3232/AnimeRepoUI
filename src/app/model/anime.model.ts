@@ -1,5 +1,4 @@
 import { Season } from './season.model';
-import { Provider } from '@angular/core';
 
 export class Anime {
     airEndDate: string;

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AngularFirePerformance } from '@angular/fire/performance';
 
@@ -25,7 +24,6 @@ export class AuthService {
    }
 
   loginUsingEmail(email: string, password: string) {
-    let result : string;
     this.afAuth.signInWithEmailAndPassword(email, password).then(value => {
       this.perf.trace('Login Using Email');
       this.userData = value.user;

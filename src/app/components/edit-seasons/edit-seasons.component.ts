@@ -4,8 +4,6 @@ import { GetAnimeService } from 'src/app/services/get-anime.service';
 import { AngularFirePerformance } from '@angular/fire/performance';
 import { AddAnimeService } from 'src/app/services/add-anime.service';
 import { Anime } from 'src/app/model/anime.model';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
-import { Season } from 'src/app/model/season.model';
 import { Episode } from 'src/app/model/episode.model';
 
 @Component({
