@@ -1,26 +1,31 @@
-<div class="edit-seasons py-2 py-md-5">
+<div class="edit-seasons py-2 py-md-4">
     <div class="text-center py-4" *ngIf="!loaded">
         <div class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
     <div class="row" *ngIf="loaded">
-        <div class="col-md-7">
+        <div class="col-12">
             <div class="row">
                 <h2 class="col-5">Season {{ seasonNumber }}</h2>
-                <div class="col-7">
+                <div class="col-7 text-right">
                     <button class="btn btn-outline-dark" (click)="addEpisode()">Add Episode?</button>
                 </div>
             </div>
-            <div class="col-12 px-0" *ngFor="let episode of anime.seasons[seasonNumber-1].episodes">
-                <div class="row py-3">
-                    <label class="col-6">
-                       <strong>Episode {{ episode.number }} : {{ episode.title }}</strong>
-                       <span class="d-block">{{ episode.description }}</span>
-                    </label>
-                    <div class="col-6 text-right">
-                        <button class="btn btn-outline-dark" (click)="editEpisode(episode.number)">Edit
-                            Episode?</button>
+            <div class="row">
+                <div class="col-md-6 py-3" *ngFor="let episode of anime.seasons[seasonNumber-1].episodes">
+                    <div class="row border h-100 py-3 color-shade">
+                        <div class="col-12 px-0">
+                            <div class="row pb-2">
+                                <label class="col-6">
+                                    <strong>Episode {{ episode.number }} : {{ episode.title }}</strong></label>
+                                <div class="col-6 text-center">
+                                    <button class="btn btn-outline-dark" (click)="editEpisode(episode.number)">Edit
+                                        Episode?</button>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="d-block col-12">{{ episode.description }}</span>
                     </div>
                 </div>
             </div>
@@ -32,9 +37,6 @@
                     {{ message }}
                 </span>
             </div>
-        </div>
-        <div class="col-md-5">
-            <img src="{{ image }}" alt="Anime Image" class="img-fluid">
         </div>
     </div>
 </div>

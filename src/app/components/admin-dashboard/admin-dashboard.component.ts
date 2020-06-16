@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AddAnimeService } from 'src/app/services/add-anime.service';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { Anime } from 'src/app/model/anime.model';
