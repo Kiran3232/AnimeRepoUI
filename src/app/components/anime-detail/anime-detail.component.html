@@ -50,8 +50,7 @@
                     </div>
                     <div class="col-6 text-left">
                         <label for="" *ngFor="let host of anime.whereToWatch" class="d-block">
-                            <a href="{{ host }}" target="_blank"
-                                class="text-success">{{ getHosting(host) }}</a></label>
+                            <a href="{{ host }}" target="_blank" class="text-success">{{ getHosting(host) }}</a></label>
                     </div>
                 </div>
             </div>
@@ -92,7 +91,7 @@
                 <div class="col-12">
                     <h3>Episode Catalogue :</h3>
                 </div>
-                <div class="col-md-6 col-lg-4 py-3" *ngFor="let season of anime.seasons">
+                <div class="col-12 py-3" *ngFor="let season of anime.seasons">
                     <div class="color-shade py-3 px-3 pointer" data-toggle="collapse"
                         attr.data-target="#season{{ season.number }}" role="button" aria-expanded="false"
                         aria-controls="multiCollapseExample1" (click)="rotate($event,season.number)">
@@ -102,11 +101,13 @@
                     </div>
                     <div class="col-12 collapse details px-0" id="season{{season.number}}">
                         <div class="row season-detail-main">
-                            <div class="col-12 py-3 season-detail d-flex" *ngFor="let episode of season.episodes">
+                            <div class="col-md-6 col-lg-3 py-3 season-detail d-flex"
+                                *ngFor="let episode of season.episodes">
                                 <strong><label>Episode {{ episode.number }} : {{ episode.title | uppercase }}
                                     </label></strong>
                                 <p class="mb-auto pb-3 pt-2">{{ episode.description }}</p>
-                                <a href="{{ episode.url }}" target="_blank" class="btn btn-dark back-button mx-auto">Watch
+                                <a href="{{ episode.url }}" target="_blank" class="btn btn-dark back-button mx-auto"
+                                    *ngIf="episode.url !== '' && episode.url !== null">Watch
                                     Now at
                                     KissAnime!</a>
                             </div>

@@ -21,16 +21,6 @@
     font-size: 20px;
 }
 
-.details {
-    border: 1px solid #dedede;
-    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
-    background-color: #F6F6F6;
-}
-
-.details:hover {
-    box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.5)
-}
-
 .pointer {
     cursor: pointer;
 }
@@ -55,10 +45,10 @@
     height: 40px !important;
 }
 
-.season-detail-main {
+/* .season-detail-main {
     max-height: 600px;
     overflow-y: auto;
-}
+} */
 
 .rotate {
     -moz-transition: all 0.25s linear;
