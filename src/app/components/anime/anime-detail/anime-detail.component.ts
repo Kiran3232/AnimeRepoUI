@@ -56,7 +56,7 @@ export class AnimeDetailComponent implements OnInit {
   }
 
   editAnime() {
-    this.router.navigate(['editAnime'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['admin','anime',this.anime.id,'editAnime']);
   }
 
   rotate(event: Event, season: number) {
