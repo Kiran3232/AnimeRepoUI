@@ -24,6 +24,9 @@ export class AdminLoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn === true){
+      this.router.navigate(['admin/home']);
+    }
   }
 
   onLogin(loginForm: FormGroup) {
