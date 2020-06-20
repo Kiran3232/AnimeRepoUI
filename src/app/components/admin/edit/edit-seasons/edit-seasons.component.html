@@ -5,15 +5,15 @@
         </div>
     </div>
     <div class="row" *ngIf="loaded">
-        <div class="col-12">
+        <div class="col-12 px-0">
             <div class="row">
-                <h2 class="col-5">Season {{ seasonNumber }}</h2>
-                <div class="col-7 text-right">
+                <h2 class="col-6">Season {{ seasonNumber }}</h2>
+                <div class="col-6 text-right">
                     <button class="btn btn-outline-dark" (click)="addEpisode()">Add Episode?</button>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-4 py-3" *ngFor="let episode of anime.seasons[seasonNumber-1].episodes">
+                <div class="col-md-6 col-lg-4 py-2" *ngFor="let episode of anime.seasons[seasonNumber-1].episodes">
                     <div class="row border h-100 py-3 color-shade">
                         <div class="col-12 px-0">
                             <div class="row pb-2">
