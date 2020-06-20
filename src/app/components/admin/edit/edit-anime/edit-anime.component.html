@@ -1,4 +1,4 @@
-<div class="edit-anime py-2 py-md-5 px-1 px-md-5 color-shade">
+<div class="edit-anime py-2 py-md-5 px-lg-5 color-shade">
     <div class="text-center py-4" *ngIf="!loaded">
         <div class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
@@ -6,40 +6,70 @@
     </div>
     <div *ngIf="loaded">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 px-0">
                 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
                     <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Name of the Anime: </label>
-                        <input type="text" name="" id="name" placeholder="Anime Name" class="col-md-9 form-control"
-                            formControlName="name">
+                        <div class="col-md-6 px-0">
+                            <div class="row">
+                                <label for="" class="col-md-3 col-form-label">Name of the Anime: </label>
+                                <div class="col-md-9 my-auto">
+                                    <input type="text" name="" id="name" placeholder="Anime Name" class="form-control"
+                                        formControlName="name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 px-0">
+                            <div class="row">
+                                <label for="" class="col-md-3 col-form-label">Source of the Anime: </label>
+                                <div class="col-md-9 my-auto">
+                                    <input type="text" name="" id="" placeholder="Anime Source" class="form-control"
+                                        formControlName="source">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Source of the Anime: </label>
-                        <input type="text" name="" id="" placeholder="Anime Source" class="col-md-9 form-control"
-                            formControlName="source">
+                        <div class="col-md-6 px-0">
+                            <div class="row">
+                                <label for="" class="col-md-3 col-form-label">Anime Description : </label>
+                                <div class="col-md-9 my-auto">
+                                    <textarea placeholder="Anime Description" class="form-control"
+                                        formControlName="description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 px-0">
+                            <div class="row">
+                                <label for="" class="col-md-3 col-form-label">Youtube Trailer URL : </label>
+                                <div class="col-md-9 my-auto">
+                                    <input type="text" name="" id="" placeholder="Youtube Trailer URL"
+                                        class="form-control" formControlName="youtubeUrl">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Anime Description : </label>
-                        <textarea placeholder="Anime Description" class="col-md-9 form-control"
-                            formControlName="description"></textarea>
+                        <div class="col-md-6 px-0">
+                            <div class="row">
+                                <label for="" class="col-md-3 col-form-label">Anime Air Start Year : </label>
+                                <div class="col-md-9 my-auto">
+                                    <input type="text" name="" id="" placeholder="Anime Air Start Year"
+                                        class="form-control" formControlName="airStartDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 px-0">
+                            <div class="row">
+                                <label for="" class="col-md-3 col-form-label">Anime Air End Year : </label>
+                                <div class="col-md-9 my-auto">
+                                    <input type="text" name="" id="" placeholder="Anime Air End Year"
+                                        class="form-control" formControlName="airEndDate">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Anime Air Start Year : </label>
-                        <input type="text" name="" id="" placeholder="Anime Air Start Year"
-                            class="col-md-9 form-control" formControlName="airStartDate">
-                    </div>
-                    <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Anime Air End Year : </label>
-                        <input type="text" name="" id="" placeholder="Anime Air End Year" class="col-md-9 form-control"
-                            formControlName="airEndDate">
-                    </div>
-                    <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Youtube Trailer URL : </label>
-                        <input type="text" name="" id="" placeholder="Youtube Trailer URL" class="col-md-9 form-control"
-                            formControlName="youtubeUrl">
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-12 px-0">
+                        <div class="col-md-12">
                             <button class="btn btn-outline-dark" (click)="addHosts()" type="button">Add Places to
                                 Watch?</button>
                             <div class="row pt-3" formArrayName="hosts">
@@ -52,19 +82,26 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="" class="col-md-3 col-form-label pl-0">Image Location : </label>
-                        <input type="text" (input)="changeFile($event)" class="form-control col-md-9"
-                            placeholder="Image Hosted Path" formControlName="image" />
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-5 mx-auto px-0">
+                        <div class="col-md-6 px-0 my-auto">
+                            <div class="row">
+                                <label for="" class="col-md-3 col-form-label">Image Location : </label>
+                                <div class="col-md-9">
+                                    <input type="text" (input)="changeFile($event)" class="form-control"
+                                        placeholder="Image Hosted Path" formControlName="image" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-lg-4 pt-3 pt-md-0 mx-auto">
                             <div *ngIf="imgPath != null">
                                 <img [src]="imgPath" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-md-12 px-0">
+
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
                             <button class="btn btn-outline-dark" (click)="addImages()" type="button">Add More
                                 Images?</button>
                             <div class="row pt-3" formArrayName="images">
