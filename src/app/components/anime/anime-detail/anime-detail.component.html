@@ -5,52 +5,63 @@
         </div>
     </div>
     <div *ngIf="loaded">
-        <div class="row color-shade py-5">
+        <div class="row color-shade bg-light pt-4">
             <div class="col-6 pb-4">
-                <a [routerLink]="['']" class="btn btn-dark back-button"><i class="fa fa-chevron-left"></i><span
+                <a [routerLink]="['']" class="btn btn-dark back-button"><span class="fa fa-chevron-left"></span><span
                         class="back-text pl-3">Back</span></a>
             </div>
             <div class="col-6 pb-4 text-right" *ngIf="loggedIn">
-                <button (click)="editAnime()" class="btn btn-outline-dark edit-button"><i class="fa fa-edit"></i><span
+                <button (click)="editAnime()" class="btn btn-outline-dark edit-button"><span class="fa fa-edit"></span><span
                         class="back-text pl-3">Edit</span></button>
             </div>
-            <div class="col-lg-8 py-4">
-                <img src="{{ anime.imagePath }}" alt="{{ anime.name }} image" class="img-fluid">
-            </div>
-            <div class="col-lg-4 text-center my-auto">
-                <h2 class="">{{ anime.name }}</h2>
-                <p class="">{{ anime.description }}</p>
+
+            <div class="card text-white bg-dark">
                 <div class="row">
-                    <div class="col-6 text-right">
-                        <p>IMDB Source : </p>
+                    <div class="col-lg-8 py-0 px-0">
+                        <img src="{{ anime.imagePath }}" alt="{{ anime.name }} image" class="img-fluid">
                     </div>
-                    <div class="col-6 text-left">
-                        <p><a href="{{ anime.source }}" target="_blank" class="text-success">{{ anime.name }}</a></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 text-right">
-                        <p>Air Start Year : </p>
-                    </div>
-                    <div class="col-6 text-left">
-                        <p>{{ anime.airStartDate }}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 text-right">
-                        <p>Air End Year : </p>
-                    </div>
-                    <div class="col-6 text-left">
-                        <p>{{ anime.airEndDate }}</p>
-                    </div>
-                </div>
-                <div class="row" *ngIf="anime.whereToWatch != null && anime.whereToWatch.length !== 0">
-                    <div class="col-6 text-right">
-                        <p>Watch Now at : </p>
-                    </div>
-                    <div class="col-6 text-left">
-                        <label for="" *ngFor="let host of anime.whereToWatch" class="d-block">
-                            <a href="{{ host }}" target="_blank" class="text-success">{{ getHosting(host) }}</a></label>
+                    <div class="col-lg-4 text-center my-auto">
+                        <div class="card-header">
+                            <h2 class="">{{ anime.name }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="">{{ anime.description }}</p>
+                            <div class="row">
+                                <div class="col-6 text-right">
+                                    <p>IMDB Source : </p>
+                                </div>
+                                <div class="col-6 text-left">
+                                    <p><a href="{{ anime.source }}" target="_blank"
+                                            class="text-success">{{ anime.name }}</a></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 text-right">
+                                    <p>Air Start Year : </p>
+                                </div>
+                                <div class="col-6 text-left">
+                                    <p>{{ anime.airStartDate }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 text-right">
+                                    <p>Air End Year : </p>
+                                </div>
+                                <div class="col-6 text-left">
+                                    <p>{{ anime.airEndDate }}</p>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="anime.whereToWatch != null && anime.whereToWatch.length !== 0">
+                                <div class="col-6 text-right">
+                                    <p>Watch Now at : </p>
+                                </div>
+                                <div class="col-6 text-left">
+                                    <label for="" *ngFor="let host of anime.whereToWatch" class="d-block">
+                                        <a href="{{ host }}" target="_blank"
+                                            [ngClass]="getHosting(host) === 'Netflix' ? 'text-danger' : 'text-warning'">{{ getHosting(host) }}</a></label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,18 +106,18 @@
                     <div class="color-shade py-3 px-3 pointer" data-toggle="collapse"
                         attr.data-target="#season{{ season.number }}" role="button" aria-expanded="false"
                         aria-controls="multiCollapseExample1" (click)="rotate($event,season.number)">
-                        <h4 class="text-dark text-center my-0">Season {{ season.number }} <span class="float-right"><i
-                                    class="fa fa-chevron-down rotate" id="season{{ season.number }}-chevron"></i></span>
+                        <h4 class="text-dark text-center my-0">Season {{ season.number }} <span class="float-right"><span
+                                    class="fa fa-chevron-down rotate" id="season{{ season.number }}-chevron"></span></span>
                         </h4>
                     </div>
                     <div class="col-12 collapse details px-0" id="season{{season.number}}">
                         <div class="row season-detail-main">
-                            <div class="col-md-6 col-lg-3 py-3 season-detail d-flex"
+                            <div class="col-md-6 col-lg-3 py-3 season-detail d-flex bg-dark text-white"
                                 *ngFor="let episode of season.episodes">
                                 <strong><label>Episode {{ episode.number }} : {{ episode.title | uppercase }}
                                     </label></strong>
                                 <p class="mb-auto pb-3 pt-2">{{ episode.description }}</p>
-                                <a href="{{ episode.url }}" target="_blank" class="btn btn-dark back-button mx-auto"
+                                <a href="{{ episode.url }}" target="_blank" class="btn btn-outline-light mx-auto"
                                     *ngIf="episode.url !== '' && episode.url !== null">Watch
                                     Now at
                                     KissAnime!</a>
