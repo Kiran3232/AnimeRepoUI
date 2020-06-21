@@ -4,7 +4,7 @@
 }
 
 .back-button:hover {
-    background-color: #DEDEDE;
+    background-color: transparent;
     color: #4B4B4B;
 }
 
@@ -28,7 +28,7 @@
 .season-detail {
     flex-direction: column;
     justify-content: space-between;
-    border-bottom: 1px solid #dedede;
+    border: 1px solid;
     box-shadow: 0 2px 4px 0 rgba(44, 42, 41, 0.2);
 }
 
@@ -45,10 +45,11 @@
     height: 40px !important;
 }
 
-/* .season-detail-main {
-    max-height: 600px;
+.season-detail-main {
+    max-height: 80vh;
     overflow-y: auto;
-} */
+    border: 1px solid #dedede;
+}
 
 .rotate {
     -moz-transition: all 0.25s linear;

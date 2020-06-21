@@ -8,6 +8,7 @@ import { AdminLoginComponent } from 'src/app/components/admin/admin-login/admin-
 import { EditAnimeComponent } from 'src/app/components/admin/edit/edit-anime/edit-anime.component';
 import { EditSeasonsComponent } from 'src/app/components/admin/edit/edit-seasons/edit-seasons.component';
 import { EditEpisodesComponent } from 'src/app/components/admin/edit/edit-episodes/edit-episodes.component';
+import { AddAnimeComponent } from 'src/app/components/admin/add-anime/add-anime.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { EditEpisodesComponent } from 'src/app/components/admin/edit/edit-episod
     AdminLoginComponent,
     EditAnimeComponent,
     EditSeasonsComponent,
-    EditEpisodesComponent
+    EditEpisodesComponent,
+    AddAnimeComponent
   ],
   imports: [
     CommonModule,

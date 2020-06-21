@@ -15,7 +15,7 @@
                 <input class="form-control w-100" type="search" placeholder="Search Anime" aria-label="Search"
                     [matAutocomplete]="auto" (input)="searchAnime($event)">
                 <span class="search-icon" id="search-icon">
-                    <i class="fa fa-search"></i>
+                    <span class="fa fa-search"></span>
                 </span>
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let anime of animeList" [value]="anime.name" (click)="openAnime(anime)">
