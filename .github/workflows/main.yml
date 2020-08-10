@@ -7,36 +7,36 @@ name: Build and Test AnimeRepoUI
 on:
   push:
     branches:
-      - '*'
-      - '!master'
+      - "*"
+      - "!master"
   pull_request:
     branches:
-      - '*'
-      - '!master'
+      - "*"
+      - "!master"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-   build-and-deploy:
-     runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
-     steps:
-     - name: Checkout
-       uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-     - name: Use Node.js 12.16.2
-       uses: actions/setup-node@v1
-       with:
-         node-version: 12.16.2
-     
-     - name: Cache node modules
-       uses: actions/cache@v1
-       with:
+      - name: Use Node.js 12.16.2
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.16.2
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
-     - name: Test and Build
-       run: |
-         npm install
-         npm test -- --watch=false --progress=false --browsers=ChromeHeadlessNoSandbox
-         npm run build --prod
+      - name: Test and Build
+        run: |
+          npm install
+          npm test -- --watch=false --progress=false --browsers=ChromeHeadlessNoSandbox
+          npm run build --prod
