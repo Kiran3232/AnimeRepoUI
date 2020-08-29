@@ -3,6 +3,9 @@
         <span class="sr-only">Loading...</span>
     </div>
 </div>
+<div *ngIf="error" class="py-4">
+    <h3 class="text-center">There was no response from the backend</h3>
+</div>
 <div class="row" *ngIf="loaded">
     <div *ngFor="let anime of animeList" class="col-md-6 col-lg-3 py-2 py-md-3 py-lg-4">
         <div class="card bg-dark text-white card-shadow h-100" (click)="openAnimeDetail(anime)">

@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   animeList: Array<Anime>;
   loaded: boolean = false;
+  error = false;
 
   constructor(
     public getAnimeService: GetAnimeService,
@@ -27,6 +28,11 @@ export class HomeComponent implements OnInit {
       this.perf.trace('Load Anime Data');
       this.animeList = data;
       this.loaded = true;
+    },
+    (error) => {
+      console.log("Backend did not respond");
+      this.loaded = true;
+      this.error = true;
     })
   }
 
