@@ -30,7 +30,7 @@
     "express": "^4.17.1",
     "firebase": "^7.14.3",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
